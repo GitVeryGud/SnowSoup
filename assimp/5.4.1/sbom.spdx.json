@@ -1,0 +1,95 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.3",
+  "name": "SBOM-SPDX-assimp-5.4.1",
+  "creationInfo": {
+    "created": "2024-06-20 20:00:10 UTC",
+    "creators": [
+      "Tool: https://github.com/homebrew/brew@4.3.6-36-g14d452f"
+    ]
+  },
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://formulae.brew.sh/spdx/assimp-5.4.1.json",
+  "documentDescribes": [
+    "SPDXRef-Archive-assimp-src",
+    "SPDXRef-Compiler",
+    "SPDXRef-Bottle-assimp"
+  ],
+  "files": [
+
+  ],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Archive-assimp-src",
+      "name": "assimp",
+      "versionInfo": "5.4.1",
+      "filesAnalyzed": false,
+      "licenseDeclared": "NOASSERTION",
+      "builtDate": "2024-05-13 11:45:14 UTC",
+      "licenseConcluded": "Cannot Represent",
+      "downloadLocation": "https://github.com/assimp/assimp/archive/refs/tags/v5.4.1.tar.gz",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+
+      ],
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "a1bf71c4eb851ca336bba301730cd072b366403e98e3739d6a024f6313b8f954"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Compiler",
+      "name": "clang",
+      "versionInfo": "15.0",
+      "filesAnalyzed": false,
+      "licenseDeclared": "NOASSERTION",
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "checksums": [
+
+      ],
+      "externalRefs": [
+
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-Bottle-assimp",
+      "name": "assimp",
+      "versionInfo": "5.4.1",
+      "filesAnalyzed": false,
+      "licenseDeclared": "NOASSERTION",
+      "builtDate": "2024-05-13 11:45:14 UTC",
+      "licenseConcluded": "Cannot Represent",
+      "downloadLocation": "https://ghcr.io/v2/homebrew/core/assimp/blobs/sha256:1c519a97c6544a8b848130ed1ba4301563e7a88792e8a7021b2dded16d17f159",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceLocator": "pkg:brew/homebrew/core/assimp@5.4.1",
+          "referenceType": "purl"
+        }
+      ],
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "1c519a97c6544a8b848130ed1ba4301563e7a88792e8a7021b2dded16d17f159"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-File-assimp",
+      "relationshipType": "PACKAGE_OF",
+      "relatedSpdxElement": "SPDXRef-Archive-assimp-src"
+    },
+    {
+      "spdxElementId": "SPDXRef-Compiler",
+      "relationshipType": "BUILD_TOOL_OF",
+      "relatedSpdxElement": "SPDXRef-Package-assimp-src"
+    }
+  ]
+}

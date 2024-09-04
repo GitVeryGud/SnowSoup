@@ -7,7 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F5045EA52C78BC8800785286 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5045EA42C78BC8800785286 /* main.cpp */; };
+		F5045EA52C78BC8800785286 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = F5045EA42C78BC8800785286 /* main.mm */; };
+		F5045EAD2C78BD1900785286 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5045EAC2C78BD1900785286 /* QuartzCore.framework */; };
+		F5045EAF2C78BD2500785286 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5045EAE2C78BD2500785286 /* Metal.framework */; };
+		F5045EB12C78BD3C00785286 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5045EB02C78BD3C00785286 /* Foundation.framework */; };
+		F5045EB32C78BD4200785286 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5045EB22C78BD4200785286 /* AppKit.framework */; };
+		F5045F2A2C78C05700785286 /* libassimp.5.4.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F5045F292C78C05700785286 /* libassimp.5.4.1.dylib */; };
+		F5045F2B2C78C05700785286 /* libassimp.5.4.1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = F5045F292C78C05700785286 /* libassimp.5.4.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F5045F312C78C46400785286 /* SnowSoup.mm in Sources */ = {isa = PBXBuildFile; fileRef = F5045F302C78C46400785286 /* SnowSoup.mm */; };
+		F5045F342C7CACA200785286 /* WindowDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = F5045F332C7CACA200785286 /* WindowDelegate.mm */; };
+		F5045F372C7CADE400785286 /* Input.mm in Sources */ = {isa = PBXBuildFile; fileRef = F5045F362C7CADE400785286 /* Input.mm */; };
+		F5045F3A2C7CB40D00785286 /* MetalView.mm in Sources */ = {isa = PBXBuildFile; fileRef = F5045F392C7CB40D00785286 /* MetalView.mm */; };
+		F5FB81152C7CBFD90084435F /* Implementation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5FB81142C7CBFD90084435F /* Implementation.cpp */; };
+		F5FB811A2C7DF5600084435F /* Transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5FB81182C7DF5600084435F /* Transform.cpp */; };
+		F5FB811E2C7DF61F0084435F /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5FB811C2C7DF61F0084435F /* Camera.cpp */; };
+		F5FB81242C7DF7610084435F /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5FB81222C7DF7610084435F /* Model.cpp */; };
+		F5FB81272C7DF7730084435F /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5FB81252C7DF7730084435F /* Mesh.cpp */; };
+		F5FB812B2C7DF8140084435F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5FB81292C7DF8140084435F /* Texture.cpp */; };
+		F5FB812F2C7DFADC0084435F /* STBI_Implementation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5FB812E2C7DFADC0084435F /* STBI_Implementation.cpp */; };
+		F5FB81332C8731670084435F /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5FB81312C8731670084435F /* Node.cpp */; };
+		F5FB81362C8731C60084435F /* MeshNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5FB81342C8731C60084435F /* MeshNode.cpp */; };
+		F5FB81392C8737170084435F /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = F5FB81382C8737170084435F /* Shaders.metal */; };
+		F5FB813B2C8737270084435F /* Skybox.metal in Sources */ = {isa = PBXBuildFile; fileRef = F5FB813A2C8737270084435F /* Skybox.metal */; };
+		F5FB813D2C87374E0084435F /* PhongShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = F5FB813C2C87374E0084435F /* PhongShader.metal */; };
+		F5FB81412C87377D0084435F /* DirectionalLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5FB813F2C87377D0084435F /* DirectionalLight.cpp */; };
+		F5FB81452C8739270084435F /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5FB81432C8739270084435F /* Renderer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -20,11 +44,64 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		F5045F282C78BD5F00785286 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F5045F2B2C78C05700785286 /* libassimp.5.4.1.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F5045EA12C78BC8800785286 /* SnowSoup */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SnowSoup; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5045EA42C78BC8800785286 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		F5045EA42C78BC8800785286 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		F5045EAC2C78BD1900785286 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F5045EAE2C78BD2500785286 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		F5045EB02C78BD3C00785286 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F5045EB22C78BD4200785286 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		F5045F292C78C05700785286 /* libassimp.5.4.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.5.4.1.dylib; path = assimp/5.4.1/lib/libassimp.5.4.1.dylib; sourceTree = "<group>"; };
+		F5045F2C2C78C0AB00785286 /* SnowDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnowDefs.h; sourceTree = "<group>"; };
+		F5045F2D2C78C17E00785286 /* SnowStructs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnowStructs.h; sourceTree = "<group>"; };
+		F5045F302C78C46400785286 /* SnowSoup.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SnowSoup.mm; sourceTree = "<group>"; };
+		F5045F322C78C4B400785286 /* SnowSoup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SnowSoup.hpp; sourceTree = "<group>"; };
+		F5045F332C7CACA200785286 /* WindowDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = WindowDelegate.mm; sourceTree = "<group>"; };
+		F5045F352C7CACB600785286 /* WindowDelegate.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = WindowDelegate.hpp; sourceTree = "<group>"; };
+		F5045F362C7CADE400785286 /* Input.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Input.mm; sourceTree = "<group>"; };
+		F5045F382C7CADF300785286 /* Input.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Input.hpp; sourceTree = "<group>"; };
+		F5045F392C7CB40D00785286 /* MetalView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MetalView.mm; sourceTree = "<group>"; };
+		F5045F3B2C7CB42200785286 /* MetalView.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MetalView.hpp; sourceTree = "<group>"; };
+		F5045F3C2C7CBCA000785286 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
+		F5FB81142C7CBFD90084435F /* Implementation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Implementation.cpp; sourceTree = "<group>"; };
+		F5FB81162C7CC0F50084435F /* SnowInputs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnowInputs.h; sourceTree = "<group>"; };
+		F5FB81182C7DF5600084435F /* Transform.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Transform.cpp; sourceTree = "<group>"; };
+		F5FB81192C7DF5600084435F /* Transform.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Transform.hpp; sourceTree = "<group>"; };
+		F5FB811C2C7DF61F0084435F /* Camera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		F5FB811D2C7DF61F0084435F /* Camera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
+		F5FB811F2C7DF65F0084435F /* PerspectiveCamera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PerspectiveCamera.hpp; sourceTree = "<group>"; };
+		F5FB81202C7DF6AE0084435F /* OrthographicCamera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OrthographicCamera.hpp; sourceTree = "<group>"; };
+		F5FB81222C7DF7610084435F /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
+		F5FB81232C7DF7610084435F /* Model.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
+		F5FB81252C7DF7730084435F /* Mesh.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
+		F5FB81262C7DF7730084435F /* Mesh.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Mesh.hpp; sourceTree = "<group>"; };
+		F5FB81292C7DF8140084435F /* Texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
+		F5FB812A2C7DF8140084435F /* Texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
+		F5FB812E2C7DFADC0084435F /* STBI_Implementation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = STBI_Implementation.cpp; sourceTree = "<group>"; };
+		F5FB81312C8731670084435F /* Node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
+		F5FB81322C8731670084435F /* Node.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Node.hpp; sourceTree = "<group>"; };
+		F5FB81342C8731C60084435F /* MeshNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MeshNode.cpp; sourceTree = "<group>"; };
+		F5FB81352C8731C60084435F /* MeshNode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MeshNode.hpp; sourceTree = "<group>"; };
+		F5FB81382C8737170084435F /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		F5FB813A2C8737270084435F /* Skybox.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Skybox.metal; sourceTree = "<group>"; };
+		F5FB813C2C87374E0084435F /* PhongShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = PhongShader.metal; sourceTree = "<group>"; };
+		F5FB813F2C87377D0084435F /* DirectionalLight.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DirectionalLight.cpp; sourceTree = "<group>"; };
+		F5FB81402C87377D0084435F /* DirectionalLight.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DirectionalLight.hpp; sourceTree = "<group>"; };
+		F5FB81432C8739270084435F /* Renderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Renderer.cpp; sourceTree = "<group>"; };
+		F5FB81442C8739270084435F /* Renderer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Renderer.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +109,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5045F2A2C78C05700785286 /* libassimp.5.4.1.dylib in Frameworks */,
+				F5045EAF2C78BD2500785286 /* Metal.framework in Frameworks */,
+				F5045EB32C78BD4200785286 /* AppKit.framework in Frameworks */,
+				F5045EB12C78BD3C00785286 /* Foundation.framework in Frameworks */,
+				F5045EAD2C78BD1900785286 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +125,7 @@
 			children = (
 				F5045EA32C78BC8800785286 /* SnowSoup */,
 				F5045EA22C78BC8800785286 /* Products */,
+				F5045EAB2C78BD1900785286 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,9 +140,138 @@
 		F5045EA32C78BC8800785286 /* SnowSoup */ = {
 			isa = PBXGroup;
 			children = (
-				F5045EA42C78BC8800785286 /* main.cpp */,
+				F5045F2C2C78C0AB00785286 /* SnowDefs.h */,
+				F5045F2D2C78C17E00785286 /* SnowStructs.h */,
+				F5FB81162C7CC0F50084435F /* SnowInputs.h */,
+				F5FB81142C7CBFD90084435F /* Implementation.cpp */,
+				F5045F2E2C78C33800785286 /* Core */,
+				F5045EA42C78BC8800785286 /* main.mm */,
 			);
 			path = SnowSoup;
+			sourceTree = "<group>";
+		};
+		F5045EAB2C78BD1900785286 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F5045F3C2C7CBCA000785286 /* MetalKit.framework */,
+				F5045F292C78C05700785286 /* libassimp.5.4.1.dylib */,
+				F5045EB22C78BD4200785286 /* AppKit.framework */,
+				F5045EB02C78BD3C00785286 /* Foundation.framework */,
+				F5045EAE2C78BD2500785286 /* Metal.framework */,
+				F5045EAC2C78BD1900785286 /* QuartzCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F5045F2E2C78C33800785286 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				F5FB813E2C87376B0084435F /* Light */,
+				F5FB81372C8736C90084435F /* Shaders */,
+				F5FB81302C8731510084435F /* Nodes */,
+				F5FB81282C7DF8060084435F /* Texture */,
+				F5FB81212C7DF74A0084435F /* Model */,
+				F5FB81172C7DF5500084435F /* Transform */,
+				F5045F2F2C78C3B800785286 /* Control */,
+				F5FB81422C8738FF0084435F /* Renderer */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		F5045F2F2C78C3B800785286 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				F5045F302C78C46400785286 /* SnowSoup.mm */,
+				F5045F322C78C4B400785286 /* SnowSoup.hpp */,
+				F5045F332C7CACA200785286 /* WindowDelegate.mm */,
+				F5045F352C7CACB600785286 /* WindowDelegate.hpp */,
+				F5045F362C7CADE400785286 /* Input.mm */,
+				F5045F382C7CADF300785286 /* Input.hpp */,
+				F5045F392C7CB40D00785286 /* MetalView.mm */,
+				F5045F3B2C7CB42200785286 /* MetalView.hpp */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
+		F5FB81172C7DF5500084435F /* Transform */ = {
+			isa = PBXGroup;
+			children = (
+				F5FB811B2C7DF60E0084435F /* Cameras */,
+				F5FB81182C7DF5600084435F /* Transform.cpp */,
+				F5FB81192C7DF5600084435F /* Transform.hpp */,
+			);
+			path = Transform;
+			sourceTree = "<group>";
+		};
+		F5FB811B2C7DF60E0084435F /* Cameras */ = {
+			isa = PBXGroup;
+			children = (
+				F5FB811C2C7DF61F0084435F /* Camera.cpp */,
+				F5FB811D2C7DF61F0084435F /* Camera.hpp */,
+				F5FB811F2C7DF65F0084435F /* PerspectiveCamera.hpp */,
+				F5FB81202C7DF6AE0084435F /* OrthographicCamera.hpp */,
+			);
+			path = Cameras;
+			sourceTree = "<group>";
+		};
+		F5FB81212C7DF74A0084435F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F5FB81222C7DF7610084435F /* Model.cpp */,
+				F5FB81232C7DF7610084435F /* Model.hpp */,
+				F5FB81252C7DF7730084435F /* Mesh.cpp */,
+				F5FB81262C7DF7730084435F /* Mesh.hpp */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F5FB81282C7DF8060084435F /* Texture */ = {
+			isa = PBXGroup;
+			children = (
+				F5FB81292C7DF8140084435F /* Texture.cpp */,
+				F5FB812A2C7DF8140084435F /* Texture.hpp */,
+				F5FB812E2C7DFADC0084435F /* STBI_Implementation.cpp */,
+			);
+			path = Texture;
+			sourceTree = "<group>";
+		};
+		F5FB81302C8731510084435F /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				F5FB81312C8731670084435F /* Node.cpp */,
+				F5FB81322C8731670084435F /* Node.hpp */,
+				F5FB81342C8731C60084435F /* MeshNode.cpp */,
+				F5FB81352C8731C60084435F /* MeshNode.hpp */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		F5FB81372C8736C90084435F /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				F5FB81382C8737170084435F /* Shaders.metal */,
+				F5FB813A2C8737270084435F /* Skybox.metal */,
+				F5FB813C2C87374E0084435F /* PhongShader.metal */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		F5FB813E2C87376B0084435F /* Light */ = {
+			isa = PBXGroup;
+			children = (
+				F5FB813F2C87377D0084435F /* DirectionalLight.cpp */,
+				F5FB81402C87377D0084435F /* DirectionalLight.hpp */,
+			);
+			path = Light;
+			sourceTree = "<group>";
+		};
+		F5FB81422C8738FF0084435F /* Renderer */ = {
+			isa = PBXGroup;
+			children = (
+				F5FB81432C8739270084435F /* Renderer.cpp */,
+				F5FB81442C8739270084435F /* Renderer.hpp */,
+			);
+			path = Renderer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -72,6 +284,7 @@
 				F5045E9D2C78BC8800785286 /* Sources */,
 				F5045E9E2C78BC8800785286 /* Frameworks */,
 				F5045E9F2C78BC8800785286 /* CopyFiles */,
+				F5045F282C78BD5F00785286 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -119,7 +332,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5045EA52C78BC8800785286 /* main.cpp in Sources */,
+				F5FB81242C7DF7610084435F /* Model.cpp in Sources */,
+				F5FB811A2C7DF5600084435F /* Transform.cpp in Sources */,
+				F5045F342C7CACA200785286 /* WindowDelegate.mm in Sources */,
+				F5045EA52C78BC8800785286 /* main.mm in Sources */,
+				F5FB81272C7DF7730084435F /* Mesh.cpp in Sources */,
+				F5FB813B2C8737270084435F /* Skybox.metal in Sources */,
+				F5045F372C7CADE400785286 /* Input.mm in Sources */,
+				F5FB811E2C7DF61F0084435F /* Camera.cpp in Sources */,
+				F5FB81152C7CBFD90084435F /* Implementation.cpp in Sources */,
+				F5045F312C78C46400785286 /* SnowSoup.mm in Sources */,
+				F5FB81392C8737170084435F /* Shaders.metal in Sources */,
+				F5FB81412C87377D0084435F /* DirectionalLight.cpp in Sources */,
+				F5FB81332C8731670084435F /* Node.cpp in Sources */,
+				F5FB81452C8739270084435F /* Renderer.cpp in Sources */,
+				F5045F3A2C7CB40D00785286 /* MetalView.mm in Sources */,
+				F5FB813D2C87374E0084435F /* PhongShader.metal in Sources */,
+				F5FB812B2C7DF8140084435F /* Texture.cpp in Sources */,
+				F5FB81362C8731C60084435F /* MeshNode.cpp in Sources */,
+				F5FB812F2C7DFADC0084435F /* STBI_Implementation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,7 +413,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -247,6 +478,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5L45AB5W3F;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = (
+					assimp/5.4.1/include,
+					stb,
+					SnowSoup,
+					"metal-cpp",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/assimp/5.4.1/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -257,6 +498,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5L45AB5W3F;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = (
+					assimp/5.4.1/include,
+					stb,
+					SnowSoup,
+					"metal-cpp",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/assimp/5.4.1/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
