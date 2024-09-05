@@ -37,7 +37,9 @@
     layer.drawableSize = CGSizeMake(TextureWidth, TextureHeight);
     CA::MetalDrawable* metalDrawable = (__bridge CA::MetalDrawable*)[layer nextDrawable];
     renderer->createDepthAndTargetTextures(TextureWidth, TextureHeight);
+    renderer->drawSetup(metalDrawable);
     renderer->draw(metalDrawable, sceneTree);
+    renderer->endDraw(metalDrawable);
 }
 
 // Runs on end of resize
@@ -52,7 +54,9 @@
     layer.drawableSize = CGSizeMake(TextureWidth, TextureHeight);
     CA::MetalDrawable* metalDrawable = (__bridge CA::MetalDrawable*)[layer nextDrawable];
     renderer->createDepthAndTargetTextures(TextureWidth, TextureHeight);
+    renderer->drawSetup(metalDrawable);
     renderer->draw(metalDrawable, sceneTree);
+    renderer->endDraw(metalDrawable);
 }
 
 - (void)windowWillClose:(NSNotification*)notification {

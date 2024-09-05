@@ -65,6 +65,7 @@ void SnowSoup::initWindow(NSSize windowSize, NSString* windowName) {
     [windowDelegate setSceneTree:sceneTree];
     [windowDelegate setLayer:metalLayer];
     
+    
     printf("Window initialized\n");
 }
 
