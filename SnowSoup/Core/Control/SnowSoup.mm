@@ -90,6 +90,8 @@ void SnowSoup::run() {
                 [NSApp updateWindows];
             }
             
+            renderer->camera->rotation.y += input->getMouseDelta().x;
+            
             CA::MetalDrawable* metalDrawable = (__bridge CA::MetalDrawable*)[metalLayer nextDrawable];
             
             renderer->drawSetup(metalDrawable);
