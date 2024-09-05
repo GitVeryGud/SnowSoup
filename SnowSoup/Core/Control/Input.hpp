@@ -28,6 +28,9 @@ public:
     bool isKeyJustPressed(unsigned short key);
     bool isKeyJustReleased(unsigned short key);
     bool isMouseDown(unsigned short key);
+    
+    void resetMouseDelta();
+    
     simd_float2 currentMousePosition();
     simd_float2 getMouseDelta();
     

@@ -13,9 +13,10 @@ void SnowSoup::init() {
     
     initApp();
     initDevice();
-    initWindow();
     
     renderer = new Renderer(device);
+    
+    initWindow();
 }
 
 void SnowSoup::initApp() {
@@ -36,9 +37,6 @@ void SnowSoup::initWindow(NSSize windowSize, NSString* windowName) {
     metalLayer = [CAMetalLayer layer];
     
     WindowDelegate* windowDelegate = [[WindowDelegate alloc] init];
-    [windowDelegate setRenderer:renderer];
-    [windowDelegate setSceneTree:sceneTree];
-    //[windowDelegate setLayer:metalLayer];
     
     MetalView* metalView = [[MetalView alloc] init];
     [metalView setInputManager:input];
@@ -52,6 +50,7 @@ void SnowSoup::initWindow(NSSize windowSize, NSString* windowName) {
                    defer:NO];
     [metalWindow setBackgroundColor:[NSColor blueColor]];
     [metalWindow makeKeyAndOrderFront: NSApp];
+    [metalWindow setAcceptsMouseMovedEvents:YES];
     metalWindow.contentView = metalView;
     metalWindow.delegate = windowDelegate;
     [metalWindow setTitle: windowName];
@@ -62,6 +61,9 @@ void SnowSoup::initWindow(NSSize windowSize, NSString* windowName) {
     metalLayer.allowsEdgeAntialiasing = true;
     metalLayer.drawableSize = CGSizeMake(512 * 3, 512 * 3);
     
+    [windowDelegate setRenderer:renderer];
+    [windowDelegate setSceneTree:sceneTree];
+    [windowDelegate setLayer:metalLayer];
     
     printf("Window initialized\n");
 }
@@ -84,6 +86,8 @@ void SnowSoup::run() {
     
     while (running) {
         @autoreleasepool {
+            input->resetMouseDelta();
+            
             while ((event = [NSApp nextEventMatchingMask:NSEventMaskAny untilDate:nil inMode:NSDefaultRunLoopMode dequeue:YES])) {
 
                 [NSApp sendEvent:event];
@@ -91,6 +95,7 @@ void SnowSoup::run() {
             }
             
             renderer->camera->rotation.y += input->getMouseDelta().x;
+            renderer->camera->rotation.x += input->getMouseDelta().y;
             
             CA::MetalDrawable* metalDrawable = (__bridge CA::MetalDrawable*)[metalLayer nextDrawable];
             

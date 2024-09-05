@@ -59,11 +59,12 @@
 
 - (void)mouseMoved:(NSEvent *)event {
     if (event.type == NSEventTypeMouseMoved) {
+        
         input->mousePosition.x = NSEvent.mouseLocation.x;
         input->mousePosition.y = NSEvent.mouseLocation.y;
         
         input->mouseDelta.x = event.deltaX;
-        input->mouseDelta.y = event.deltaX;
+        input->mouseDelta.y = event.deltaY;
     }
 }
 
