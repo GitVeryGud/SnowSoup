@@ -475,8 +475,9 @@
 		F5045EA92C78BC8800785286 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5L45AB5W3F;
+				DEVELOPMENT_TEAM = BUVM85N7NV;
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = (
 					assimp/5.4.1/include,
@@ -495,8 +496,9 @@
 		F5045EAA2C78BC8800785286 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5L45AB5W3F;
+				DEVELOPMENT_TEAM = BUVM85N7NV;
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = (
 					assimp/5.4.1/include,

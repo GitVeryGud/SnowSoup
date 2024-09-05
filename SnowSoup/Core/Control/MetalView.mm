@@ -57,4 +57,31 @@
     }
 }
 
+- (void)mouseMoved:(NSEvent *)event {
+    if (event.type == NSEventTypeMouseMoved) {
+        
+        input->mousePosition.x = NSEvent.mouseLocation.x;
+        input->mousePosition.y = NSEvent.mouseLocation.y;
+        
+        input->mouseDelta.x = event.deltaX;
+        input->mouseDelta.y = event.deltaY;
+    }
+}
+
+- (void)mouseUp:(NSEvent *)event {
+    input->leftMouseState = false;
+}
+
+- (void)mouseDown:(NSEvent *)event {
+    input->leftMouseState = true;
+}
+
+- (void)rightMouseUp:(NSEvent *)event {
+    input->rightMouseState = false;
+}
+
+- (void)rightMouseDown:(NSEvent *)event {
+    input->rightMouseState = true;
+}
+
 @end

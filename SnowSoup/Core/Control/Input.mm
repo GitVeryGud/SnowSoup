@@ -26,3 +26,20 @@ bool Input::isKeyJustPressed(unsigned short key) {
 bool Input::isKeyJustReleased(unsigned short key) {
     return justReleasedKeys[key];
 }
+
+bool Input::isMouseDown(unsigned short key) {
+    return key > 0 ? (rightMouseState) : (leftMouseState);
+}
+
+void Input::resetMouseDelta() {
+    mouseDelta.x = 0;
+    mouseDelta.y = 0;
+}
+
+simd_float2 Input::currentMousePosition() {
+    return mousePosition;
+}
+
+simd_float2 Input::getMouseDelta() {
+    return mouseDelta;
+}

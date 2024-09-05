@@ -46,6 +46,8 @@ public:
     
     float angle = 0.f;
     
+    Camera*                         camera;
+    
 private:
     MTL::Device*                    _pDevice;
     MTL::CommandQueue*              _pCommandQueue;
@@ -66,8 +68,7 @@ private:
     MTL::Buffer*                    _pVertexColors2Buffer;
     MTL::Buffer*                    _pVertexNormalsBuffer;
     MTL::Buffer*                    _pIndexBuffer;
-    
-    Camera*                         camera;
+
     DirectionalLight*               directionalLight;
     
     simd::float3*                   vertices = nullptr;
