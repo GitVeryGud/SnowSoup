@@ -22,7 +22,6 @@ int main(int argc, const char * argv[]) {
     boneco->importModel("Models/Anime_charcter2.dae");
     boneco2->importModel("Models/baoxiaoling2.obj");
 
-    boneco2->importTexture("Models/textures.png");
     boneco2->importTexture("Models/zombie.png");
     
     engine.addNode(boneco2);

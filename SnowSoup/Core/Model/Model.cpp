@@ -196,7 +196,7 @@ void Model::buildBuffers() {
     textureBuffer->didModifyRange(NS::Range::Make(0, textureBuffer->length()));
 }
 
-void Model::render(MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms) {
+void Model::render(MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms, Snow_PhongUniforms* phongUniforms) {
     MeshNode* currentMeshNode = nullptr;
     MeshNode* stack[256];
     for (int i = 0; i < 256; i++)
@@ -209,6 +209,7 @@ void Model::render(MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms) {
     
     
     pEnc->setFragmentTexture(texture->texture, 0);
+    pEnc->setFragmentBytes(phongUniforms, sizeof(Snow_PhongUniforms), NS::UInteger(1));
     
     stack[0] = baseNode;
     stackPtr++;
@@ -247,7 +248,7 @@ void Model::render(MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms) {
     delete localUniforms;
 }
 
-void Model::Draw(MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms) {
-    render(pEnc, uniforms);
+void Model::Draw(MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms, Snow_PhongUniforms* phongUniforms) {
+    render(pEnc, uniforms, phongUniforms);
 }
 

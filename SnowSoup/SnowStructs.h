@@ -31,6 +31,14 @@ typedef struct {
 } Snow_SkyboxUniforms;
 
 typedef struct {
+    vector_float3 u_LightDir;
+    vector_float3 u_AmbientLightColor;
+    vector_float3 u_LightColor;
+    vector_float3 u_ViewPosition;
+    float u_SpecularIntensity;
+} Snow_PhongUniforms;
+
+typedef struct {
     MTL::RenderPipelineState* pipelineState;
     MTL::DepthStencilState* depthState;
 } Snow_ForwardState;

@@ -12,7 +12,7 @@ Renderer::Renderer( MTL::Device* pDevice )
 {
     _pCommandQueue = _pDevice->newCommandQueue();
 
-    Snow_ForwardState state1 = buildShaders("vertexMain", "fragmentMain");
+    Snow_ForwardState state1 = buildShaders("vertexMain", "fragmentPhong");
     Snow_ForwardState state2 = buildShaders("vertexSkybox", "fragmentSkybox");
     
     _pPSO = state1.pipelineState;
@@ -326,6 +326,14 @@ void Renderer::draw( CA::MetalDrawable* drawable, Node* sceneTree ) {
     pEnc->setFrontFacingWinding(MTL::WindingCounterClockwise);
     pEnc->setDepthStencilState(_pDSS);
     
+    Snow_PhongUniforms* phongUniforms = new Snow_PhongUniforms;
+    
+    phongUniforms->u_AmbientLightColor = vector3(0.05f, 0.05f, 0.2f);
+    phongUniforms->u_ViewPosition = camera->position;
+    phongUniforms->u_LightDir = directionalLight->Direction();
+    phongUniforms->u_LightColor = skyUniforms->u_LightColor;
+    phongUniforms->u_SpecularIntensity = 0.1f;
+    
     if (sceneTree == nullptr)
         return;
     
@@ -334,7 +342,7 @@ void Renderer::draw( CA::MetalDrawable* drawable, Node* sceneTree ) {
     
     while (stackPtr > 0) {
         nodeStack[stackPtr - 1]->Update();
-        nodeStack[stackPtr - 1]->Draw( pEnc, uniforms );
+        nodeStack[stackPtr - 1]->Draw( pEnc, uniforms, phongUniforms );
         
         currentNode = nodeStack[stackPtr - 1];
         nodeStack[stackPtr - 1] = nullptr;
@@ -346,6 +354,8 @@ void Renderer::draw( CA::MetalDrawable* drawable, Node* sceneTree ) {
             stackPtr++;
         }
     }
+    
+    delete phongUniforms;
 }
 
 void Renderer::endDraw(CA::MetalDrawable* drawable) {

@@ -26,9 +26,9 @@ public:
     Model(MTL::Device* device);
     void importModel(const std::string filename);
     void importTexture(const char* filepath);
-    void render(MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms);
+    void render(MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms, Snow_PhongUniforms* phongUniforms);
     
-    void Draw( MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms ) override;
+    void Draw( MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms, Snow_PhongUniforms* phongUniforms ) override;
 private:
     MTL::Device* device;
     MTL::Buffer* vertexBuffer;
