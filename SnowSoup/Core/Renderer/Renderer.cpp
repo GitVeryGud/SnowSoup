@@ -57,7 +57,7 @@ void Renderer::buildSphere() {
     
     UInt16 segments = 16;
     UInt16 rings = 8;
-    float radius = 1;
+    float radius = 10;
     
     UInt16 verticesCount = segments * rings + 1;
     UInt16 indicesCount = ((rings - 2) * (segments - 1) * 6 + 2*(segments - 1) * 3 );
@@ -242,6 +242,7 @@ void Renderer::createDepthAndTargetTextures(int width, int height) {
     targetTextureDescriptor->setSampleCount(2);
     targetTextureDescriptor->setUsage(MTL::TextureUsageRenderTarget);
     
+    if (_pRenderTargetTexture != nullptr) {_pRenderTargetTexture->release();}
     _pRenderTargetTexture = _pDevice->newTexture(targetTextureDescriptor);
     
     MTL::TextureDescriptor* depthDescriptor = MTL::TextureDescriptor::alloc()->init();
@@ -252,6 +253,7 @@ void Renderer::createDepthAndTargetTextures(int width, int height) {
     depthDescriptor->setUsage(MTL::TextureUsageRenderTarget);
     depthDescriptor->setSampleCount(2);
     
+    if (_pDepthTexture != nullptr) {_pDepthTexture->release();}
     _pDepthTexture = _pDevice->newTexture(depthDescriptor);
     
     depthDescriptor->release();

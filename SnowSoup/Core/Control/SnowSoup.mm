@@ -13,9 +13,12 @@ void SnowSoup::init() {
     
     initApp();
     initDevice();
-    initWindow();
     
     renderer = new Renderer(device);
+    
+    initWindow();
+    
+    
 }
 
 void SnowSoup::initApp() {
@@ -36,9 +39,6 @@ void SnowSoup::initWindow(NSSize windowSize, NSString* windowName) {
     metalLayer = [CAMetalLayer layer];
     
     WindowDelegate* windowDelegate = [[WindowDelegate alloc] init];
-    [windowDelegate setRenderer:renderer];
-    [windowDelegate setSceneTree:sceneTree];
-    //[windowDelegate setLayer:metalLayer];
     
     MetalView* metalView = [[MetalView alloc] init];
     [metalView setInputManager:input];
@@ -61,6 +61,10 @@ void SnowSoup::initWindow(NSSize windowSize, NSString* windowName) {
     metalLayer.pixelFormat = MTLPixelFormatBGRA8Unorm;
     metalLayer.allowsEdgeAntialiasing = true;
     metalLayer.drawableSize = CGSizeMake(512 * 3, 512 * 3);
+    
+    [windowDelegate setRenderer:renderer];
+    [windowDelegate setSceneTree:sceneTree];
+    [windowDelegate setLayer:metalLayer];
     
     
     printf("Window initialized\n");
