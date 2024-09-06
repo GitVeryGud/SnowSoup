@@ -18,6 +18,7 @@
 #include "Input.hpp"
 #include "Core/Nodes/Node.hpp"
 #include "Renderer.hpp"
+#include "Core/Players/ModelTest.hpp"
 
 
 class SnowSoup{
@@ -28,6 +29,8 @@ public:
     void addNode(Node* newNode);
     
     MTL::Device* device;
+    
+    Input* input;
 private:
     void initApp();
     void initDevice();
@@ -37,8 +40,6 @@ private:
     void initWindow();
     
     Node* sceneTree = nullptr;
-    
-    Input* input;
     
     NSWindow* metalWindow;
 
