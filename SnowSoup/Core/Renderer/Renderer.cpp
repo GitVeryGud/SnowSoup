@@ -174,7 +174,6 @@ void Renderer::buildSphere() {
 }
 
 void Renderer::buildMatrices() {
-    camera->position = vector3(0.f, 0.f, -5.f);
     uniforms->viewMatrix = camera->ViewMatrix();
     uniforms->projectionMatrix = camera->ProjectionMatrix();
 }
@@ -260,14 +259,11 @@ void Renderer::createDepthAndTargetTextures(int width, int height) {
     targetTextureDescriptor->release();
 }
 
-void Renderer::drawSetup( CA::MetalDrawable* drawable) {
-    
-    angle += 0.01f;
-    
+void Renderer::drawSetup( CA::MetalDrawable* drawable) {  
     buildMatrices();
     buildSkybox();
     
-    directionalLight->rotation.x = 45 * angle;
+    directionalLight->rotation.x = 200 + angle;
     skyUniforms->u_LightDir = directionalLight->Direction();
     
     // RENDER PASS DESCRIPTOR SETUP
@@ -335,6 +331,8 @@ void Renderer::draw( CA::MetalDrawable* drawable, Node* sceneTree ) {
     phongUniforms->u_LightDir = directionalLight->Direction();
     phongUniforms->u_LightColor = skyUniforms->u_LightColor;
     phongUniforms->u_SpecularIntensity = 0.1f;
+
+    uniforms->modelMatrix = transform.TransformMatrix();
     
     if (sceneTree == nullptr)
         return;

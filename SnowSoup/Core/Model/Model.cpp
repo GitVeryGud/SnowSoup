@@ -73,6 +73,9 @@ void Model::readModelNodeTree(MeshNode* node, aiNode* assimpNode, const aiScene*
     }
     newTransform = carriedTransform;
     newTransform *= assimpNode->mTransformation;
+    
+    
+    
     setMeshNodeTransformation(newTransform, node);
     
     printf("%d\n", assimpNode->mNumChildren);
@@ -215,6 +218,7 @@ void Model::render(MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms, Sno
     stackPtr++;
     
     uniforms->modelMatrix = TransformMatrix();
+    uniforms->rotationMatrix = RotationMatrix();
     
     Snow_Uniforms* localUniforms = new Snow_Uniforms;
     
@@ -228,6 +232,7 @@ void Model::render(MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms, Sno
         localUniforms->modelMatrix = translationMatrix;
         localUniforms->projectionMatrix = uniforms->projectionMatrix;
         localUniforms->viewMatrix = uniforms->viewMatrix;
+        localUniforms->rotationMatrix = uniforms->rotationMatrix;
         pEnc->setVertexBytes(localUniforms, sizeof(Snow_Uniforms), 3);
         
         for (int i = 0; i < stack[stackPtr - 1]->meshCount; i++) {

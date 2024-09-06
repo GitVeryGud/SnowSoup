@@ -95,8 +95,16 @@ void SnowSoup::run() {
                 [NSApp updateWindows];
             }
             
-            renderer->camera->rotation.y += input->getMouseDelta().x;
+            renderer->camera->rotation.y -= input->getMouseDelta().x;
             renderer->camera->rotation.x += input->getMouseDelta().y;
+            
+            if(input->isKeyPressed(KEY_W)){renderer->camera->position.z += 0.1f;}
+            if(input->isKeyPressed(KEY_S)){renderer->camera->position.z -= 0.1f;}
+            if(input->isKeyPressed(KEY_A)){renderer->camera->position.x += 0.1f;}
+            if(input->isKeyPressed(KEY_D)){renderer->camera->position.x -= 0.1f;}
+            
+            if(input->isKeyPressed(KEY_O)){renderer->angle += 2.f;}
+            if(input->isKeyPressed(KEY_P)){renderer->angle -= 2.f;}
             
             CA::MetalDrawable* metalDrawable = (__bridge CA::MetalDrawable*)[metalLayer nextDrawable];
             

@@ -10,11 +10,14 @@
 
 int main(int argc, const char * argv[]) {
     SnowSoup engine;
-    Model* boneco, *boneco2;
+    Model* boneco2;
+    ModelTest* boneco;
     engine.init();
     
-    boneco = new Model(engine.device);
+    boneco = new ModelTest(engine.device);
     boneco2 = new Model(engine.device);
+    
+    boneco->input = engine.input;
     
     boneco->position = vector3(-2.f, -3.f, 10.f);
     boneco2->position = vector3(2.f, -3.f, 4.f);
@@ -24,7 +27,7 @@ int main(int argc, const char * argv[]) {
 
     boneco2->importTexture("Models/zombie.png");
     
-    engine.addNode(boneco2);
+    //engine.addNode(boneco2);
     engine.addNode(boneco);
     
     engine.run();
