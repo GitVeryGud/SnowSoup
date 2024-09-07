@@ -32,6 +32,7 @@
 		F5FB813D2C87374E0084435F /* PhongShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = F5FB813C2C87374E0084435F /* PhongShader.metal */; };
 		F5FB81412C87377D0084435F /* DirectionalLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5FB813F2C87377D0084435F /* DirectionalLight.cpp */; };
 		F5FB81452C8739270084435F /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5FB81432C8739270084435F /* Renderer.cpp */; };
+		F5FDCA802C8B30F700E68895 /* ModelTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5FDCA7E2C8B30F700E68895 /* ModelTest.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -102,6 +103,8 @@
 		F5FB81402C87377D0084435F /* DirectionalLight.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DirectionalLight.hpp; sourceTree = "<group>"; };
 		F5FB81432C8739270084435F /* Renderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Renderer.cpp; sourceTree = "<group>"; };
 		F5FB81442C8739270084435F /* Renderer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Renderer.hpp; sourceTree = "<group>"; };
+		F5FDCA7E2C8B30F700E68895 /* ModelTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ModelTest.cpp; sourceTree = "<group>"; };
+		F5FDCA7F2C8B30F700E68895 /* ModelTest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ModelTest.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +169,7 @@
 		F5045F2E2C78C33800785286 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F5FDCA7D2C8B30D200E68895 /* Players */,
 				F5FB813E2C87376B0084435F /* Light */,
 				F5FB81372C8736C90084435F /* Shaders */,
 				F5FB81302C8731510084435F /* Nodes */,
@@ -274,6 +278,15 @@
 			path = Renderer;
 			sourceTree = "<group>";
 		};
+		F5FDCA7D2C8B30D200E68895 /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				F5FDCA7E2C8B30F700E68895 /* ModelTest.cpp */,
+				F5FDCA7F2C8B30F700E68895 /* ModelTest.hpp */,
+			);
+			path = Players;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -335,6 +348,7 @@
 				F5FB81242C7DF7610084435F /* Model.cpp in Sources */,
 				F5FB811A2C7DF5600084435F /* Transform.cpp in Sources */,
 				F5045F342C7CACA200785286 /* WindowDelegate.mm in Sources */,
+				F5FDCA802C8B30F700E68895 /* ModelTest.cpp in Sources */,
 				F5045EA52C78BC8800785286 /* main.mm in Sources */,
 				F5FB81272C7DF7730084435F /* Mesh.cpp in Sources */,
 				F5FB813B2C8737270084435F /* Skybox.metal in Sources */,
@@ -477,7 +491,7 @@
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BUVM85N7NV;
+				DEVELOPMENT_TEAM = 5L45AB5W3F;
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = (
 					assimp/5.4.1/include,
@@ -498,7 +512,7 @@
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BUVM85N7NV;
+				DEVELOPMENT_TEAM = 5L45AB5W3F;
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = (
 					assimp/5.4.1/include,

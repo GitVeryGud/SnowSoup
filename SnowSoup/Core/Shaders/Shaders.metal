@@ -12,6 +12,7 @@ struct Uniforms {
     float4x4 modelMatrix;
     float4x4 viewMatrix;
     float4x4 projectionMatrix;
+    float4x4 rotationMatrix;
 };
 
 struct v2f
@@ -33,7 +34,7 @@ v2f vertex vertexMain( uint vertexId [[vertex_id]],
     
     v2f o;
     o.position = position;
-    o.normal = normals[vertexId];
+    o.normal = (uniforms.rotationMatrix * float4(normals[vertexId], 1.0)).xyz;
     o.texturePosition = texturePosition;
     return o;
 }

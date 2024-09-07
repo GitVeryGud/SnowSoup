@@ -14,8 +14,10 @@
 class MeshNode : public Transform {
 public:
     Mesh** meshes = nullptr;
-    matrix_float4x4 transformation, localTransformation;
+    matrix_float4x4 transformation, localTransformation, rotationMatrix;
     int meshCount = 0;
+    
+    void extractRotation();
 };
 
 #endif /* MeshNode_hpp */
