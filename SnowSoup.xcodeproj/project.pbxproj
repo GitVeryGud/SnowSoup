@@ -33,6 +33,7 @@
 		F5FB81412C87377D0084435F /* DirectionalLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5FB813F2C87377D0084435F /* DirectionalLight.cpp */; };
 		F5FB81452C8739270084435F /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5FB81432C8739270084435F /* Renderer.cpp */; };
 		F5FDCA802C8B30F700E68895 /* ModelTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5FDCA7E2C8B30F700E68895 /* ModelTest.cpp */; };
+		F5FDCA842C8BCDDB00E68895 /* SnowSpherePrimitive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F5FDCA822C8BCDDB00E68895 /* SnowSpherePrimitive.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -105,6 +106,8 @@
 		F5FB81442C8739270084435F /* Renderer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Renderer.hpp; sourceTree = "<group>"; };
 		F5FDCA7E2C8B30F700E68895 /* ModelTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ModelTest.cpp; sourceTree = "<group>"; };
 		F5FDCA7F2C8B30F700E68895 /* ModelTest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ModelTest.hpp; sourceTree = "<group>"; };
+		F5FDCA822C8BCDDB00E68895 /* SnowSpherePrimitive.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SnowSpherePrimitive.cpp; sourceTree = "<group>"; };
+		F5FDCA832C8BCDDB00E68895 /* SnowSpherePrimitive.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SnowSpherePrimitive.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +172,7 @@
 		F5045F2E2C78C33800785286 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F5FDCA812C8BCDA600E68895 /* Primitives */,
 				F5FDCA7D2C8B30D200E68895 /* Players */,
 				F5FB813E2C87376B0084435F /* Light */,
 				F5FB81372C8736C90084435F /* Shaders */,
@@ -287,6 +291,15 @@
 			path = Players;
 			sourceTree = "<group>";
 		};
+		F5FDCA812C8BCDA600E68895 /* Primitives */ = {
+			isa = PBXGroup;
+			children = (
+				F5FDCA822C8BCDDB00E68895 /* SnowSpherePrimitive.cpp */,
+				F5FDCA832C8BCDDB00E68895 /* SnowSpherePrimitive.hpp */,
+			);
+			path = Primitives;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -350,6 +363,7 @@
 				F5045F342C7CACA200785286 /* WindowDelegate.mm in Sources */,
 				F5FDCA802C8B30F700E68895 /* ModelTest.cpp in Sources */,
 				F5045EA52C78BC8800785286 /* main.mm in Sources */,
+				F5FDCA842C8BCDDB00E68895 /* SnowSpherePrimitive.cpp in Sources */,
 				F5FB81272C7DF7730084435F /* Mesh.cpp in Sources */,
 				F5FB813B2C8737270084435F /* Skybox.metal in Sources */,
 				F5045F372C7CADE400785286 /* Input.mm in Sources */,

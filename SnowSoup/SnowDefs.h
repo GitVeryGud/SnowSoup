@@ -13,5 +13,6 @@
 #define SnowDefs_h
 
 #define SNOWSOUP_PI_F (3.14159265f)
+#define SNOWSOUP_TAU (6.28318548f)
 
 #endif /* SnowDefs_h */

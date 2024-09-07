@@ -22,6 +22,10 @@ void Node::Draw( MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms, Snow_
 
 }
 
+void Node::Draw( MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms, Snow_SkyboxUniforms* skyboxUniforms) {
+
+}
+
 void Node::Update() {
 
 }

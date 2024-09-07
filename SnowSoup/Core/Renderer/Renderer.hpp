@@ -21,9 +21,9 @@
 #include "PerspectiveCamera.hpp"
 #include "OrthographicCamera.hpp"
 #include "DirectionalLight.hpp"
+#include "SnowSpherePrimitive.hpp"
 
-class Renderer
-{
+class Renderer{
 public:
     Renderer( MTL::Device* pDevice );
     ~Renderer();
@@ -35,7 +35,6 @@ public:
     Snow_ForwardState       buildShaders(std::string vertex, std::string fragment);
     void                    buildMatrices();
     void                    buildSkybox();
-    void                    buildSphere();
     
     void                    createDepthAndTargetTextures(int width, int height);
     
@@ -76,6 +75,8 @@ private:
     
     int                             numV = 0;
     int                             numI = 0;
+    
+    SnowSpherePrimitive             *skybox;
     
     Snow_SkyboxUniforms             *skyUniforms = new Snow_SkyboxUniforms;
     Transform                       *boneco = new Transform;
