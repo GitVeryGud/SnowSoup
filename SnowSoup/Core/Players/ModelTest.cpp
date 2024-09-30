@@ -12,8 +12,13 @@ ModelTest::ModelTest(MTL::Device *device) : Model(device) {
 }
 
 void ModelTest::Update() {
+    if (myHead == nullptr) {
+        printf("It's null\n");
+        return;
+    }
+    
     if (input->isKeyPressed(KEY_LEFT))
-        rotation.y += 1.f;
+        myHead->rotation.y += 1.f;
     if (input->isKeyPressed(KEY_RIGHT))
-        rotation.y -= 1.f;
+        myHead->rotation.y -= 1.f;
 }

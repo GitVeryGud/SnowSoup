@@ -14,12 +14,12 @@
 
 class Transform : public Node{
     public:
-    inline Transform(){};
+    Transform(){ isTransform = true; };
     vector_float3 position = vector3(0.f, 0.f, 0.f);
     vector_float3 rotation = vector3(0.f, 0.f, 0.f);
     vector_float3 scale = vector3(1.f, 1.f, 1.f);
     
-    simd_float4x4 RotationMatrix();
+    simd_float4x4 RotationMatrix(bool pure);
     simd_float4x4 TransformMatrix();
     
     vector_float3 Forward();

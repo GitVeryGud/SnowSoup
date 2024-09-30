@@ -18,6 +18,7 @@ public:
     Node* parent;
     Node* children[256];
     int childrenCount;
+    bool isTransform = false;
     
     Node();
     

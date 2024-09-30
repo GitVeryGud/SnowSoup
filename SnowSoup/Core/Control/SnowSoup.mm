@@ -95,8 +95,8 @@ void SnowSoup::run() {
                 [NSApp updateWindows];
             }
             
-            renderer->camera->rotation.y -= input->getMouseDelta().x;
-            renderer->camera->rotation.x += input->getMouseDelta().y;
+//            renderer->camera->rotation.y -= input->getMouseDelta().x;
+//            renderer->camera->rotation.x += input->getMouseDelta().y;
             
             if(input->isKeyPressed(KEY_W)){renderer->camera->position.z += 0.1f;}
             if(input->isKeyPressed(KEY_S)){renderer->camera->position.z -= 0.1f;}

@@ -7,7 +7,7 @@
 
 #include "Transform.hpp"
 
-simd_float4x4 Transform::RotationMatrix(){
+simd_float4x4 Transform::RotationMatrix(bool pure){
     simd::float4x4 rotationMatrix;
     
     vector_float3 tempRotation = rotation * SNOWSOUP_PI_F/180;
@@ -31,7 +31,18 @@ simd_float4x4 Transform::RotationMatrix(){
     rotationZ.columns[2] = {0, 0, 1, 0 };
     rotationZ.columns[3] = { 0, 0, 0, 1 };
     
+    if (pure) {
+        rotationMatrix = rotationX;
+        rotationMatrix *= rotationY;
+        rotationMatrix *= rotationZ;
+        return rotationMatrix;
+    }
+    
     rotationMatrix = rotationX;
+    if (parent != NULL && parent->isTransform) {
+        rotationMatrix = dynamic_cast<Transform*>(parent)->RotationMatrix(true);
+        rotationMatrix *= rotationX;
+    }
     rotationMatrix *= rotationY;
     rotationMatrix *= rotationZ;
     
@@ -60,7 +71,12 @@ simd_float4x4 Transform::TransformMatrix(){
                                 );
     
     transformMatrix = translationMatrix;
-    transformMatrix *= RotationMatrix();
+    if (parent != NULL && parent->isTransform) {
+        transformMatrix = dynamic_cast<Transform*>(parent)->TransformMatrix();
+        transformMatrix *= translationMatrix;
+    }
+        
+    transformMatrix *= RotationMatrix(true);
     transformMatrix *= scaleMatrix;
     
     return transformMatrix;
@@ -69,16 +85,16 @@ simd_float4x4 Transform::TransformMatrix(){
 vector_float3 Transform::Forward(){
     simd::float4 forward = vector4(0.f, 0.f, 1.f, 0.f);
     
-    return simd_mul(forward, RotationMatrix()).xyz;
+    return simd_mul(forward, RotationMatrix(true)).xyz;
 }
 
 vector_float3 Transform::Right(){
     simd::float4 right = vector4(1.f, 0.f, 0.f, 0.f);
     
-    return simd_mul(right, RotationMatrix()).xyz;
+    return simd_mul(right, RotationMatrix(true)).xyz;
 }
 vector_float3 Transform::Up(){
     simd::float4 up = vector4(0.f, 1.f, 0.f, 0.f);
     
-    return simd_mul(up, RotationMatrix()).xyz;
+    return simd_mul(up, RotationMatrix(true)).xyz;
 }

@@ -219,7 +219,7 @@ void Model::render(MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms, Sno
     stackPtr++;
     
     uniforms->modelMatrix = TransformMatrix();
-    uniforms->rotationMatrix = RotationMatrix();
+    uniforms->rotationMatrix = RotationMatrix(false);
     
     Snow_Uniforms* localUniforms = new Snow_Uniforms;
     

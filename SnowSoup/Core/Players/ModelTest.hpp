@@ -18,6 +18,7 @@ public:
     ModelTest(MTL::Device* device);
     
     Input* input;
+    MeshNode* myHead = nullptr;
     void Update() override;
 };
 
