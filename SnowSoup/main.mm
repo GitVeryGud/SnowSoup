@@ -1,34 +1,32 @@
-//
-//  main.mm
-//  SnowSoup
-//
-//  Created by Guilherme de Souza Barci on 23/08/24.
-//
-
-//#include "Core/Control/SnowSoup.hpp"
 #include "SnowSoup.hpp"
+#include "Core/Players/ModelTest.hpp"
 
 int main(int argc, const char * argv[]) {
     SnowSoup engine;
-    Model* boneco2;
-    ModelTest* boneco;
+    ModelTest* t;
+    Model* m;
+    
     engine.init();
     
-    boneco = new ModelTest(engine.device);
-    boneco2 = new Model(engine.device);
+    t = new ModelTest(engine.device);
+    m = new Model(engine.device);
+    t->input = engine.input;
     
-    boneco->input = engine.input;
+    t->importModel("Models/Anime_charcter2.dae");
+    m->importModel("Models/Anime_charcter2.dae");
     
-    boneco->position = vector3(-2.f, -3.f, 10.f);
-    boneco2->position = vector3(2.f, -3.f, 4.f);
+    t->AddChild(m);
+    t->myHead = t->baseNode->findMeshnode("Cabeza_001");
+    t->myHair = t->baseNode->findMeshnode("export_001");
     
-    boneco->importModel("Models/Anime_charcter2.dae");
-    boneco2->importModel("Models/baoxiaoling2.obj");
-
-    boneco2->importTexture("Models/zombie.png");
+    engine.addNode(t);
     
-    //engine.addNode(boneco2);
-    engine.addNode(boneco);
+    t->position.z = 7.f;
+    t->position.y = -2.5f;
+    
+    m->position.z = 5.f;
+    m->rotation.y = 60.f;
+    m->rotation.x = 30.f;
     
     engine.run();
     

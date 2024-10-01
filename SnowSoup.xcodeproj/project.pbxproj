@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		522324792C8F221800D18BCF /* Collider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 522324772C8F221800D18BCF /* Collider.cpp */; };
+		5223247C2C8F263300D18BCF /* BoxCollider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5223247A2C8F263300D18BCF /* BoxCollider.cpp */; };
 		F5045EA52C78BC8800785286 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = F5045EA42C78BC8800785286 /* main.mm */; };
 		F5045EAD2C78BD1900785286 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5045EAC2C78BD1900785286 /* QuartzCore.framework */; };
 		F5045EAF2C78BD2500785286 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5045EAE2C78BD2500785286 /* Metal.framework */; };
@@ -59,6 +61,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		522324772C8F221800D18BCF /* Collider.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Collider.cpp; sourceTree = "<group>"; };
+		522324782C8F221800D18BCF /* Collider.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Collider.hpp; sourceTree = "<group>"; };
+		5223247A2C8F263300D18BCF /* BoxCollider.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BoxCollider.cpp; sourceTree = "<group>"; };
+		5223247B2C8F263300D18BCF /* BoxCollider.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BoxCollider.hpp; sourceTree = "<group>"; };
+		5244E17A2C945559004CFE5C /* Snow.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Snow.hpp; sourceTree = "<group>"; };
 		F5045EA12C78BC8800785286 /* SnowSoup */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SnowSoup; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5045EA42C78BC8800785286 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		F5045EAC2C78BD1900785286 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -123,6 +130,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		522324762C8F21B800D18BCF /* Colliders */ = {
+			isa = PBXGroup;
+			children = (
+				522324772C8F221800D18BCF /* Collider.cpp */,
+				522324782C8F221800D18BCF /* Collider.hpp */,
+				5223247A2C8F263300D18BCF /* BoxCollider.cpp */,
+				5223247B2C8F263300D18BCF /* BoxCollider.hpp */,
+			);
+			path = Colliders;
+			sourceTree = "<group>";
+		};
 		F5045E982C78BC8800785286 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +164,7 @@
 				F5045F2C2C78C0AB00785286 /* SnowDefs.h */,
 				F5045F2D2C78C17E00785286 /* SnowStructs.h */,
 				F5FB81162C7CC0F50084435F /* SnowInputs.h */,
+				5244E17A2C945559004CFE5C /* Snow.hpp */,
 				F5FB81142C7CBFD90084435F /* Implementation.cpp */,
 				F5045F2E2C78C33800785286 /* Core */,
 				F5045EA42C78BC8800785286 /* main.mm */,
@@ -169,6 +188,7 @@
 		F5045F2E2C78C33800785286 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				522324762C8F21B800D18BCF /* Colliders */,
 				F5FDCA7D2C8B30D200E68895 /* Players */,
 				F5FB813E2C87376B0084435F /* Light */,
 				F5FB81372C8736C90084435F /* Shaders */,
@@ -346,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5FB81242C7DF7610084435F /* Model.cpp in Sources */,
+				522324792C8F221800D18BCF /* Collider.cpp in Sources */,
 				F5FB811A2C7DF5600084435F /* Transform.cpp in Sources */,
 				F5045F342C7CACA200785286 /* WindowDelegate.mm in Sources */,
 				F5FDCA802C8B30F700E68895 /* ModelTest.cpp in Sources */,
@@ -365,6 +386,7 @@
 				F5FB812B2C7DF8140084435F /* Texture.cpp in Sources */,
 				F5FB81362C8731C60084435F /* MeshNode.cpp in Sources */,
 				F5FB812F2C7DFADC0084435F /* STBI_Implementation.cpp in Sources */,
+				5223247C2C8F263300D18BCF /* BoxCollider.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,7 +513,7 @@
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5L45AB5W3F;
+				DEVELOPMENT_TEAM = BUVM85N7NV;
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = (
 					assimp/5.4.1/include,
@@ -512,7 +534,7 @@
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5L45AB5W3F;
+				DEVELOPMENT_TEAM = BUVM85N7NV;
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = (
 					assimp/5.4.1/include,

@@ -98,10 +98,25 @@ void SnowSoup::run() {
             renderer->camera->rotation.y -= input->getMouseDelta().x;
             renderer->camera->rotation.x += input->getMouseDelta().y;
             
-            if(input->isKeyPressed(KEY_W)){renderer->camera->position.z += 0.1f;}
-            if(input->isKeyPressed(KEY_S)){renderer->camera->position.z -= 0.1f;}
-            if(input->isKeyPressed(KEY_A)){renderer->camera->position.x += 0.1f;}
-            if(input->isKeyPressed(KEY_D)){renderer->camera->position.x -= 0.1f;}
+            vector_float3 off_r = renderer->camera->Right();
+            vector_float3 off_f = renderer->camera->Forward();
+            
+            if(input->isKeyPressed(KEY_W)) {
+                renderer->camera->position.z += 0.1f * off_f.z;
+                renderer->camera->position.x += 0.1f * off_f.x;
+            }
+            if(input->isKeyPressed(KEY_S)) {
+                renderer->camera->position.z -= 0.1f * off_f.z;
+                renderer->camera->position.x -= 0.1f * off_f.x;
+            }
+            if(input->isKeyPressed(KEY_A)) {
+                renderer->camera->position.z += 0.1f * off_r.z;
+                renderer->camera->position.x += 0.1f * off_r.x;
+            }
+            if(input->isKeyPressed(KEY_D)) {
+                renderer->camera->position.z -= 0.1f * off_r.z;
+                renderer->camera->position.x -= 0.1f * off_r.x;
+            }
             
             if(input->isKeyPressed(KEY_O)){renderer->angle += 2.f;}
             if(input->isKeyPressed(KEY_P)){renderer->angle -= 2.f;}

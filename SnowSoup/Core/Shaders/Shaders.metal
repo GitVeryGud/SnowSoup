@@ -35,6 +35,7 @@ v2f vertex vertexMain( uint vertexId [[vertex_id]],
     v2f o;
     o.position = position;
     o.normal = (uniforms.rotationMatrix * float4(normals[vertexId], 1.0)).xyz;
+//    o.normal = normals[vertexId];
     o.texturePosition = texturePosition;
     return o;
 }

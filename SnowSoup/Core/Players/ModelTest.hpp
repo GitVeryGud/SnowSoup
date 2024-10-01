@@ -17,7 +17,10 @@ class ModelTest : public Model {
 public:
     ModelTest(MTL::Device* device);
     
+    bool ctrlHead = true;
+    
     Input* input;
+    MeshNode* myHead = nullptr, *myHair = nullptr;
     void Update() override;
 };
 

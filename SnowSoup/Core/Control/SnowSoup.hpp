@@ -19,7 +19,7 @@
 #include "Core/Nodes/Node.hpp"
 #include "Renderer.hpp"
 #include "Core/Players/ModelTest.hpp"
-
+#include "Core/Colliders/BoxCollider.hpp"
 
 class SnowSoup{
 public:

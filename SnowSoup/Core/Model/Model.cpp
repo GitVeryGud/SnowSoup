@@ -71,15 +71,17 @@ void Model::readModelNodeTree(MeshNode* node, aiNode* assimpNode, const aiScene*
             node->meshes[i] = currentSnowMesh;
         }
     }
-    newTransform = carriedTransform;
-    newTransform *= assimpNode->mTransformation;
-    
-    
+//    newTransform = carriedTransform;
+//    newTransform *= assimpNode->mTransformation;
+    newTransform = assimpNode->mTransformation;
+    memcpy(node->name, assimpNode->mName.data, sizeof(char) * assimpNode->mName.length);
     
     setMeshNodeTransformation(newTransform, node);
     node->extractRotation();
     
-    printf("%d\n", assimpNode->mNumChildren);
+//    printf("%lf %lf %lf\n", node->rotation.x, node->rotation.y, node->rotation.z);
+    
+//    printf("%d\n", assimpNode->mNumChildren);
     
     for (int i = 0; i < assimpNode->mNumChildren; i++) {
         newNode = new MeshNode;
@@ -219,7 +221,7 @@ void Model::render(MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms, Sno
     stackPtr++;
     
     uniforms->modelMatrix = TransformMatrix();
-    uniforms->rotationMatrix = RotationMatrix();
+    uniforms->rotationMatrix = RotationMatrix(false);
     
     Snow_Uniforms* localUniforms = new Snow_Uniforms;
     
@@ -228,9 +230,11 @@ void Model::render(MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms, Sno
         simd::float4x4 rotationMatrix;
         
         translationMatrix = uniforms->modelMatrix;
-        translationMatrix *= stack[stackPtr - 1]->transformation;
+//        translationMatrix *= stack[stackPtr - 1]->transformation;
+        translationMatrix *= stack[stackPtr - 1]->TransformMatrix();
         
-        rotationMatrix = stack[stackPtr - 1]->rotationMatrix;
+        rotationMatrix = stack[stackPtr - 1]->RotationMatrix(true);
+//        rotationMatrix *= stack[stackPtr - 1]->rotationMatrix;
         
         localUniforms->modelMatrix = translationMatrix;
         localUniforms->projectionMatrix = uniforms->projectionMatrix;

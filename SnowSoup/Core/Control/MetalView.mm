@@ -19,7 +19,7 @@
 
 - (void)interpretKeyEvents:(NSArray<NSEvent *> *)eventArray {
     for (int i = 0; i < eventArray.count; i++) {
-        printf("%c\n", eventArray[i].keyCode);
+//        printf("%c\n", eventArray[i].keyCode);
     }
 }
 
@@ -29,11 +29,11 @@
     if (event.type == NSEventTypeKeyDown) {
         
         key = (int)event.keyCode;
-        printf("%d\n", key);
         
         if (self->input->pressedKeys[key]) {
-            if (self->input->justPressedKeys[key] == true)
+            if (self->input->justPressedKeys[key] == true) {
                 self->input->justPressedKeys[key] = false;
+            }
         } else {
             self->input->pressedKeys[key] = true;
             self->input->justPressedKeys[key] = true;
@@ -44,6 +44,8 @@
 
 - (void)keyUp:(NSEvent *)event {
     int key;
+    
+    printf("Hello there\n");
     
     if (event.type == NSEventTypeKeyUp) {
         key = (int)event.keyCode;
