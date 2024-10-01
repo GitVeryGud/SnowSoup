@@ -10,6 +10,8 @@
 Node::Node() {
     parent = nullptr;
     childrenCount = 0;
+    
+    name[0] = '\0';
 }
 
 void Node::AddChild(Node* child) {

@@ -29,6 +29,7 @@ public:
     void render(MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms, Snow_PhongUniforms* phongUniforms);
     
     void Draw( MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms, Snow_PhongUniforms* phongUniforms ) override;
+    MeshNode* baseNode;
 private:
     MTL::Device* device;
     MTL::Buffer* vertexBuffer;
@@ -36,7 +37,7 @@ private:
     MTL::Buffer* normalsBuffer;
     
     Mesh** meshes;
-    MeshNode* baseNode;
+//    MeshNode* baseNode;
     simd::float2* textureVertices = nullptr;
     simd::float3* vertices = nullptr;
     simd::float3* normals = nullptr;

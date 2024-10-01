@@ -18,6 +18,7 @@ public:
     int meshCount = 0;
     
     void extractRotation();
+    MeshNode* findMeshnode(const char* name);
 };
 
 #endif /* MeshNode_hpp */
