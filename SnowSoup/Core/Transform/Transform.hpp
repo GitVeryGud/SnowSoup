@@ -21,6 +21,7 @@ class Transform : public Node{
     
     simd_float4x4 RotationMatrix(bool pure);
     simd_float4x4 TransformMatrix();
+    void overrideTransformMatrixValue(int row, int col, float value);
     
     vector_float3 Forward();
     vector_float3 Right();

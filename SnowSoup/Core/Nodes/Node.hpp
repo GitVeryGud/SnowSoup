@@ -15,6 +15,7 @@
 
 class Node {
 public:
+    char name[1024];
     Node* parent;
     Node* children[256];
     int childrenCount;

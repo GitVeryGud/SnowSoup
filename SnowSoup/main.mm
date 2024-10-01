@@ -16,7 +16,9 @@ int main(int argc, const char * argv[]) {
     m->importModel("Models/Anime_charcter2.dae");
     
     t->AddChild(m);
-    t->myHead = dynamic_cast<MeshNode*>(t->baseNode->children[0]);
+    t->myHead = t->baseNode->findMeshnode("Cabeza_001");
+    t->myHair = t->baseNode->findMeshnode("export_001");
+    
     engine.addNode(t);
     
     t->position.z = 7.f;

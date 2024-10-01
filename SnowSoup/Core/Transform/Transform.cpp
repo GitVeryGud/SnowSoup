@@ -98,3 +98,7 @@ vector_float3 Transform::Up(){
     
     return simd_mul(up, RotationMatrix(true)).xyz;
 }
+
+void Transform::overrideTransformMatrixValue(int row, int col, float value) {
+    
+}

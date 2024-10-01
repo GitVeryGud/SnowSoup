@@ -4,8 +4,8 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2024-09-02T13:56:43Z</created>
-  <modified>2024-09-02T13:56:43Z</modified>
+  <created>2024-10-01T11:29:23Z</created>
+  <modified>2024-10-01T11:29:23Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Y_UP</up_axis>
  </asset>
@@ -411,7 +411,7 @@
     </node>
     <node id="export_000" name="export-000"/>
     <node id="Cabeza_001" name="Cabeza-001">
-     <matrix>1.285226 -2.834593e-16 -2.834589e-16 0 -2.853773e-16 4.565427e-07 -1.276586 1.598343 2.853779e-16 1.276586 4.565427e-07 -0.01213174 0 0 0 1 </matrix>
+     <matrix>1.285226 0 0 0 0 4.565428e-07 -1.276586 1.598343 0 1.276586 4.565428e-07 -0.012 0 0 0 1 </matrix>
      <instance_geometry url="#geometry12">
       <bind_material>
        <technique_common>
@@ -435,7 +435,7 @@
      </instance_geometry>
     </node>
     <node id="export_001" name="export-001">
-     <matrix>1.276586 -2.834589e-16 -2.834589e-16 3.59117e-16 -2.834589e-16 2.282713e-07 -1.276586 1.598343 2.83459e-16 1.276586 2.282713e-07 -0.01897591 0 0 0 1 </matrix>
+     <matrix>1.276586 0 0 3.59117e-16 0 7.609046e-08 -1.276586 1.598343 0 1.276586 7.609046e-08 -0.01897591 0 0 0 1 </matrix>
      <instance_geometry url="#geometry24">
       <bind_material>
        <technique_common>
