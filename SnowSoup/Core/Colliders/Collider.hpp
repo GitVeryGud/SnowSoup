@@ -9,20 +9,29 @@
 #define Collider_hpp
 
 #include "Core/Transform/Transform.hpp"
+#include "Core/Model/Cube.hpp"
 
 class Collider : public Transform {
 public:
-    virtual int hasCollided();
-    virtual int hasCollidedWith(Collider* collider);
+    Collider(Cube* cube) {
+        isCollider = true;
+        isPrimitive = true;
+        myCube = cube;
+    };
     
-    void setTag(std::string tag);
-    std::string getTag();
+    bool hasCollided();
     
-    void setCollidersPtr(Collider** allColliders);
+    void setCollidersPtr(std::vector<Collider*>* allColliders);
+    void Draw( MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms, Snow_PhongUniforms* phongUniforms ) override;
+    
+    bool willCheckCollision = true;
+    bool canCollideWithOthers = true;
+    
+    vector_float3 previousPosition = position;
     
 private:
-    Collider** allColliders = nullptr;
-    std::string tag;
+    std::vector<Collider*>* allColliders = nullptr;
+    Cube* myCube;
 };
 
 #endif /* Collider_hpp */

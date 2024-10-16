@@ -7,20 +7,25 @@
 
 #include "Renderer.hpp"
 
-Renderer::Renderer( MTL::Device* pDevice )
+Renderer::Renderer( MTL::Device* pDevice, OcNode* octree)
 : _pDevice( pDevice->retain() )
 {
+    this->octree = octree;
     _pCommandQueue = _pDevice->newCommandQueue();
 
     Snow_ForwardState state1 = buildShaders("vertexMain", "fragmentPhong");
     Snow_ForwardState state2 = buildShaders("vertexSkybox", "fragmentSkybox");
+    Snow_ForwardState state3 = buildShaders("vertexPr", "fragmentPr");
     
     _pPSO = state1.pipelineState;
     _pDSS = state1.depthState;
     _pPSO2 = state2.pipelineState;
     _pDSS2 = state2.depthState;
+    _pPSO3 = state3.pipelineState;
+    _pDSS3 = state3.depthState;
     
     camera = new PerspectiveCamera();
+    camera->position.z = -25;
     directionalLight = new DirectionalLight();
     
     buildSphere();
@@ -40,6 +45,8 @@ Renderer::~Renderer()
     _pDSS->release();
     _pPSO2->release();
     _pDSS2->release();
+    _pPSO3->release();
+    _pDSS3->release();
     
     delete uniforms;
     delete camera;
@@ -269,7 +276,7 @@ void Renderer::drawSetup( CA::MetalDrawable* drawable) {
     // RENDER PASS DESCRIPTOR SETUP
     // SINCE WE ARE NOT USING METALKIT ANYMORE, WE NEED TO DO THIS MANUALLY
     
-    MTL::ClearColor clearColor(255,255,255,1);
+    MTL::ClearColor clearColor(0,0,0,1);
     
     _pCmd = _pCommandQueue->commandBuffer();
     _pRpd = MTL::RenderPassDescriptor::alloc()->init();
@@ -295,15 +302,15 @@ void Renderer::drawSetup( CA::MetalDrawable* drawable) {
 
 void Renderer::initDraw(CA::MetalDrawable* drawable) {
     pEnc = _pCmd->renderCommandEncoder(_pRpd);
-    pEnc->setRenderPipelineState(_pPSO2);
-    pEnc->setVertexBuffer(_pVertexPositionsBuffer, 0, 0);
-    pEnc->setVertexBuffer(_pVertexNormalsBuffer, 0, 1);
-    pEnc->setVertexBuffer(_pVertexColorsBuffer, 0, 2);
-    pEnc->setVertexBytes(uniforms, sizeof(Snow_Uniforms), NS::UInteger(3));
-    pEnc->setFragmentBytes(skyUniforms, sizeof(Snow_SkyboxUniforms), NS::UInteger(0));
-    
-    pEnc->drawIndexedPrimitives(MTL::PrimitiveTypeTriangle, numI, MTL::IndexTypeUInt32, _pIndexBuffer, 0);
-    pEnc->setFrontFacingWinding(MTL::WindingCounterClockwise);
+//    pEnc->setRenderPipelineState(_pPSO2);
+//    pEnc->setVertexBuffer(_pVertexPositionsBuffer, 0, 0);
+//    pEnc->setVertexBuffer(_pVertexNormalsBuffer, 0, 1);
+//    pEnc->setVertexBuffer(_pVertexColorsBuffer, 0, 2);
+//    pEnc->setVertexBytes(uniforms, sizeof(Snow_Uniforms), NS::UInteger(3));
+//    pEnc->setFragmentBytes(skyUniforms, sizeof(Snow_SkyboxUniforms), NS::UInteger(0));
+//    
+//    pEnc->drawIndexedPrimitives(MTL::PrimitiveTypeTriangle, numI, MTL::IndexTypeUInt32, _pIndexBuffer, 0);
+//    pEnc->setFrontFacingWinding(MTL::WindingCounterClockwise);
 }
 
 void Renderer::draw( CA::MetalDrawable* drawable, Node* sceneTree ) {
@@ -319,10 +326,10 @@ void Renderer::draw( CA::MetalDrawable* drawable, Node* sceneTree ) {
     initDraw(drawable);
     
     // DRAW MODEL
-    pEnc->setRenderPipelineState(_pPSO);
-    pEnc->setCullMode(MTL::CullModeBack);
-    pEnc->setFrontFacingWinding(MTL::WindingCounterClockwise);
-    pEnc->setDepthStencilState(_pDSS);
+//    pEnc->setRenderPipelineState(_pPSO);
+//    pEnc->setCullMode(MTL::CullModeBack);
+//    pEnc->setFrontFacingWinding(MTL::WindingCounterClockwise);
+//    pEnc->setDepthStencilState(_pDSS);
     
     Snow_PhongUniforms* phongUniforms = new Snow_PhongUniforms;
     
@@ -341,7 +348,24 @@ void Renderer::draw( CA::MetalDrawable* drawable, Node* sceneTree ) {
     stackPtr++;
     
     while (stackPtr > 0) {
+        if (nodeStack[stackPtr - 1]->isCollider) {
+            Collider* col = dynamic_cast<Collider*>(nodeStack[stackPtr-1]);
+            col->previousPosition = col->position;
+        }
         nodeStack[stackPtr - 1]->Update();
+        if (nodeStack[stackPtr - 1]->isPrimitive) {
+            pEnc->setRenderPipelineState(_pPSO3);
+            pEnc->setCullMode(MTL::CullModeBack);
+            pEnc->setFrontFacingWinding(MTL::WindingCounterClockwise);
+            pEnc->setDepthStencilState(_pDSS3);
+        }
+        else {
+            pEnc->setRenderPipelineState(_pPSO);
+            pEnc->setCullMode(MTL::CullModeBack);
+            pEnc->setFrontFacingWinding(MTL::WindingCounterClockwise);
+            pEnc->setDepthStencilState(_pDSS);
+        }
+        
         nodeStack[stackPtr - 1]->Draw( pEnc, uniforms, phongUniforms );
         
         currentNode = nodeStack[stackPtr - 1];
@@ -355,7 +379,46 @@ void Renderer::draw( CA::MetalDrawable* drawable, Node* sceneTree ) {
         }
     }
     
+//    drawOctree(drawable, phongUniforms);
+//    octree->updateOctree();
+    
     delete phongUniforms;
+}
+
+void Renderer::drawOctree( CA::MetalDrawable* drawable, Snow_PhongUniforms* pu ) {
+    OcNode* ocstack[256], *currentoc;
+    int sp = 0;
+    
+    pEnc->setRenderPipelineState(_pPSO3);
+    pEnc->setCullMode(MTL::CullModeBack);
+    pEnc->setFrontFacingWinding(MTL::WindingCounterClockwise);
+    pEnc->setDepthStencilState(_pDSS3);
+    
+    ocstack[sp] = octree;
+    
+    do {
+        currentoc = ocstack[sp];
+        
+        currentoc->myCube->scale = simd_make_float3(currentoc->size, currentoc->size, currentoc->size);
+        currentoc->myCube->position = currentoc->center;
+        
+        currentoc->myCube->Draw(pEnc, uniforms, pu);
+        
+        sp--;
+        
+        if (!currentoc->isDivided && currentoc->myColliders.size() == 0)
+            continue;
+        
+        if (currentoc->isDivided) {
+            for (int i = 0; i < 8; i++) {
+                if (currentoc->subOcs[i] == nullptr)
+                    continue;
+                sp++;
+                ocstack[sp] = currentoc->subOcs[i];
+            }
+        }
+        
+    } while (sp >= 0);
 }
 
 void Renderer::endDraw(CA::MetalDrawable* drawable) {

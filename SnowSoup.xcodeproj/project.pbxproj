@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5208B5D42CAD70FA0095EE3E /* Octree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5208B5D22CAD70FA0095EE3E /* Octree.cpp */; };
+		5208B5D72CAECD2A0095EE3E /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5208B5D52CAECD2A0095EE3E /* Cube.cpp */; };
+		5208B5DA2CB40E490095EE3E /* MovingCollider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5208B5D82CB40E490095EE3E /* MovingCollider.cpp */; };
 		522324792C8F221800D18BCF /* Collider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 522324772C8F221800D18BCF /* Collider.cpp */; };
-		5223247C2C8F263300D18BCF /* BoxCollider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5223247A2C8F263300D18BCF /* BoxCollider.cpp */; };
+		52C3A3682CBE8C5E00B80801 /* CollisionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52C3A3662CBE8C5E00B80801 /* CollisionManager.cpp */; };
 		F5045EA52C78BC8800785286 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = F5045EA42C78BC8800785286 /* main.mm */; };
 		F5045EAD2C78BD1900785286 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5045EAC2C78BD1900785286 /* QuartzCore.framework */; };
 		F5045EAF2C78BD2500785286 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5045EAE2C78BD2500785286 /* Metal.framework */; };
@@ -61,11 +64,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5208B5D22CAD70FA0095EE3E /* Octree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Octree.cpp; sourceTree = "<group>"; };
+		5208B5D32CAD70FA0095EE3E /* Octree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Octree.hpp; sourceTree = "<group>"; };
+		5208B5D52CAECD2A0095EE3E /* Cube.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Cube.cpp; sourceTree = "<group>"; };
+		5208B5D62CAECD2A0095EE3E /* Cube.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Cube.hpp; sourceTree = "<group>"; };
+		5208B5D82CB40E490095EE3E /* MovingCollider.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MovingCollider.cpp; sourceTree = "<group>"; };
+		5208B5D92CB40E490095EE3E /* MovingCollider.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MovingCollider.hpp; sourceTree = "<group>"; };
 		522324772C8F221800D18BCF /* Collider.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Collider.cpp; sourceTree = "<group>"; };
 		522324782C8F221800D18BCF /* Collider.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Collider.hpp; sourceTree = "<group>"; };
-		5223247A2C8F263300D18BCF /* BoxCollider.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BoxCollider.cpp; sourceTree = "<group>"; };
-		5223247B2C8F263300D18BCF /* BoxCollider.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BoxCollider.hpp; sourceTree = "<group>"; };
 		5244E17A2C945559004CFE5C /* Snow.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Snow.hpp; sourceTree = "<group>"; };
+		52C3A3662CBE8C5E00B80801 /* CollisionManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionManager.cpp; sourceTree = "<group>"; };
+		52C3A3672CBE8C5E00B80801 /* CollisionManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CollisionManager.hpp; sourceTree = "<group>"; };
 		F5045EA12C78BC8800785286 /* SnowSoup */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SnowSoup; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5045EA42C78BC8800785286 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		F5045EAC2C78BD1900785286 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -135,8 +144,10 @@
 			children = (
 				522324772C8F221800D18BCF /* Collider.cpp */,
 				522324782C8F221800D18BCF /* Collider.hpp */,
-				5223247A2C8F263300D18BCF /* BoxCollider.cpp */,
-				5223247B2C8F263300D18BCF /* BoxCollider.hpp */,
+				5208B5D22CAD70FA0095EE3E /* Octree.cpp */,
+				5208B5D32CAD70FA0095EE3E /* Octree.hpp */,
+				52C3A3662CBE8C5E00B80801 /* CollisionManager.cpp */,
+				52C3A3672CBE8C5E00B80801 /* CollisionManager.hpp */,
 			);
 			path = Colliders;
 			sourceTree = "<group>";
@@ -245,6 +256,8 @@
 				F5FB81232C7DF7610084435F /* Model.hpp */,
 				F5FB81252C7DF7730084435F /* Mesh.cpp */,
 				F5FB81262C7DF7730084435F /* Mesh.hpp */,
+				5208B5D52CAECD2A0095EE3E /* Cube.cpp */,
+				5208B5D62CAECD2A0095EE3E /* Cube.hpp */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -303,6 +316,8 @@
 			children = (
 				F5FDCA7E2C8B30F700E68895 /* ModelTest.cpp */,
 				F5FDCA7F2C8B30F700E68895 /* ModelTest.hpp */,
+				5208B5D82CB40E490095EE3E /* MovingCollider.cpp */,
+				5208B5D92CB40E490095EE3E /* MovingCollider.hpp */,
 			);
 			path = Players;
 			sourceTree = "<group>";
@@ -382,11 +397,14 @@
 				F5FB81332C8731670084435F /* Node.cpp in Sources */,
 				F5FB81452C8739270084435F /* Renderer.cpp in Sources */,
 				F5045F3A2C7CB40D00785286 /* MetalView.mm in Sources */,
+				5208B5DA2CB40E490095EE3E /* MovingCollider.cpp in Sources */,
+				52C3A3682CBE8C5E00B80801 /* CollisionManager.cpp in Sources */,
 				F5FB813D2C87374E0084435F /* PhongShader.metal in Sources */,
 				F5FB812B2C7DF8140084435F /* Texture.cpp in Sources */,
 				F5FB81362C8731C60084435F /* MeshNode.cpp in Sources */,
 				F5FB812F2C7DFADC0084435F /* STBI_Implementation.cpp in Sources */,
-				5223247C2C8F263300D18BCF /* BoxCollider.cpp in Sources */,
+				5208B5D72CAECD2A0095EE3E /* Cube.cpp in Sources */,
+				5208B5D42CAD70FA0095EE3E /* Octree.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

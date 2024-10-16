@@ -14,7 +14,13 @@ void SnowSoup::init() {
     initApp();
     initDevice();
     
-    renderer = new Renderer(device);
+    Cube* cube = new Cube(device);
+    cube->setColor(0.f, 1.f, 0.f);
+    cube->buildBuffers();
+    
+//    baseOcNode = new OcNode(0, simd_make_float3(0), 20, cube);
+    renderer = new Renderer(device, baseOcNode);
+    allColliders = new std::vector<Collider*>();
     
     initWindow();
 }
@@ -79,14 +85,53 @@ void SnowSoup::initWindow(){
 
 void SnowSoup::addNode(Node* newNode) {
     sceneTree->AddChild(newNode);
+    
+    Node* stack[256], *current;
+    int sp = 0;
+    
+    stack[sp] = newNode;
+    
+    do {
+        current = stack[sp];
+        
+        if (current->isCollider) {
+            allColliders->push_back(dynamic_cast<Collider*>(current));
+//            baseOcNode->addCollider(dynamic_cast<Collider*>(current));
+        }
+        
+        sp--;
+        
+        for (int i = 0; i < current->childrenCount; i++) {
+            sp++;
+            stack[sp] = current->children[i];
+        }
+        
+    } while (sp >= 0);
 }
 
 void SnowSoup::run() {
     NSEvent *event;
     int running = 1;
     
+    std::chrono::system_clock::time_point a = std::chrono::system_clock::now();
+    std::chrono::system_clock::time_point b = std::chrono::system_clock::now();
+    
     while (running) {
         @autoreleasepool {
+            a = std::chrono::system_clock::now();
+            std::chrono::duration<double, std::milli> work_time = a - b;
+            
+            if (work_time.count() < 15.0) {
+                std::chrono::duration<double, std::milli> delta_ms(15.0 - work_time.count());
+                auto delta_ms_duration = std::chrono::duration_cast<std::chrono::milliseconds>(delta_ms);
+                std::this_thread::sleep_for(std::chrono::milliseconds(delta_ms_duration.count()));
+            }
+            
+            b = std::chrono::system_clock::now();
+            std::chrono::duration<double, std::milli> sleep_time = b - a;
+            deltaTime = sleep_time.count();
+//            printf("%f\n", deltaTime);
+            
             input->resetMouseDelta();
             
             while ((event = [NSApp nextEventMatchingMask:NSEventMaskAny untilDate:nil inMode:NSDefaultRunLoopMode dequeue:YES])) {
@@ -95,27 +140,27 @@ void SnowSoup::run() {
                 [NSApp updateWindows];
             }
             
-            renderer->camera->rotation.y -= input->getMouseDelta().x;
-            renderer->camera->rotation.x += input->getMouseDelta().y;
+            renderer->camera->rotation.y -= 1 * input->getMouseDelta().x;
+            renderer->camera->rotation.x += 1 * input->getMouseDelta().y;
             
             vector_float3 off_r = renderer->camera->Right();
             vector_float3 off_f = renderer->camera->Forward();
             
             if(input->isKeyPressed(KEY_W)) {
-                renderer->camera->position.z += 0.1f * off_f.z;
-                renderer->camera->position.x += 0.1f * off_f.x;
+                renderer->camera->position.z += 1 * off_f.z * deltaTime;
+                renderer->camera->position.x += 1 * off_f.x * deltaTime;
             }
             if(input->isKeyPressed(KEY_S)) {
-                renderer->camera->position.z -= 0.1f * off_f.z;
-                renderer->camera->position.x -= 0.1f * off_f.x;
+                renderer->camera->position.z -= 1 * off_f.z * deltaTime;
+                renderer->camera->position.x -= 1 * off_f.x * deltaTime;
             }
             if(input->isKeyPressed(KEY_A)) {
-                renderer->camera->position.z += 0.1f * off_r.z;
-                renderer->camera->position.x += 0.1f * off_r.x;
+                renderer->camera->position.z += 1 * off_r.z * deltaTime;
+                renderer->camera->position.x += 1 * off_r.x * deltaTime;
             }
             if(input->isKeyPressed(KEY_D)) {
-                renderer->camera->position.z -= 0.1f * off_r.z;
-                renderer->camera->position.x -= 0.1f * off_r.x;
+                renderer->camera->position.z -= 1 * off_r.z * deltaTime;
+                renderer->camera->position.x -= 1 * off_r.x * deltaTime;
             }
             
             if(input->isKeyPressed(KEY_O)){renderer->angle += 2.f;}

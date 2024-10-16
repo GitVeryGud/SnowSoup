@@ -22,6 +22,11 @@ struct v2f
     float2 texturePosition;
 };
 
+struct v1f
+{
+    float4 position [[position]];
+};
+
 v2f vertex vertexMain( uint vertexId [[vertex_id]],
                        device const float3* positions [[buffer(0)]],
                       device const float3* normals [[buffer(1)]],
@@ -40,12 +45,30 @@ v2f vertex vertexMain( uint vertexId [[vertex_id]],
     return o;
 }
 
+v1f vertex vertexPr( uint vertexId [[vertex_id]],
+                       device const float3* positions [[buffer(0)]],
+                        constant Uniforms &uniforms[[buffer(1)]])
+{
+    float4 fixedInPosition = float4( positions[ vertexId ], 1.0);
+    float4 position = uniforms.projectionMatrix * uniforms.viewMatrix * uniforms.modelMatrix * fixedInPosition;
+    
+    v1f o;
+    o.position = position;
+    return o;
+}
+
 float4 fragment fragmentMain( v2f in [[stage_in]], texture2d<float> texture [[texture(0)]] )
 {
     constexpr sampler textureSampler (mag_filter::linear, min_filter::linear);
     const float4 colorSample = texture.sample(textureSampler, in.texturePosition);
     
     return colorSample;
+}
+
+float4 fragment fragmentPr( v1f in [[stage_in]],
+                           device const float3* inc[[buffer(1)]])
+{
+    return float4(inc[0], 1.f);
 }
 
 

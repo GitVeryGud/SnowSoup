@@ -7,22 +7,9 @@
 
 #include "Collider.hpp"
 
-void Collider::setTag(std::string tag) {
-    this->tag = tag;
-}
-
-std::string Collider::getTag() {
-    return tag;
-}
-
-void Collider::setCollidersPtr(Collider** allColliders) {
-    this->allColliders = allColliders;
-}
-
-int Collider::hasCollided() {
-    return -1;
-}
-
-int Collider::hasCollidedWith(Collider* collider) {
-    return -1;
+void Collider::Draw( MTL::RenderCommandEncoder* pEnc, Snow_Uniforms* uniforms, Snow_PhongUniforms* phongUniforms ) {
+    myCube->scale = scale;
+    myCube->rotation = rotation;
+    myCube->position = position;
+    myCube->Draw(pEnc, uniforms, phongUniforms);
 }

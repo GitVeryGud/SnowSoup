@@ -40,12 +40,13 @@
             self->input->justReleasedKeys[key] = false;
         }
     }
+    printf("Hello!\n");
 }
 
 - (void)keyUp:(NSEvent *)event {
     int key;
     
-    printf("Hello there\n");
+//    printf("Hello there\n");
     
     if (event.type == NSEventTypeKeyUp) {
         key = (int)event.keyCode;

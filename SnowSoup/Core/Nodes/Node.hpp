@@ -19,7 +19,10 @@ public:
     Node* parent;
     Node* children[256];
     int childrenCount;
+    
     bool isTransform = false;
+    bool isCollider = false;
+    bool isPrimitive = false;
     
     Node();
     
