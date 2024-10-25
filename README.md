@@ -8,7 +8,7 @@ Next thing, go to build settings in your project and add the path to the headers
 
 You are now ready to start SnowSouping.
 
-## Basic Project
+### Basic Project
 
 The most basic project using SnowSoup capabilities is:
 
