@@ -1,6 +1,4 @@
-# SnowSoup
-
-## SnowSoup Setup
+## 1. SnowSoup Setup
 
 In order to start using SnowSoup, the first thing you need to do is download the framework file from the GitHub repository.
 
@@ -36,7 +34,7 @@ And after adding all of your nodes to the engine, to run the game you call:
 
 And that’s all!
 
-## Classes
+## 2. Classes
 
 In this segment, all of the classes that make SnowSoup are explained in great detail in order to make you understand everything one must know to develop a game using this engine.
 
