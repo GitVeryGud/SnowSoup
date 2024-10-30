@@ -7,10 +7,10 @@
 
 #include "Renderer.hpp"
 
-Renderer::Renderer( MTL::Device* pDevice, OcNode* octree)
+Renderer::Renderer( MTL::Device* pDevice, std::vector<Collider*>* allColliders )
 : _pDevice( pDevice->retain() )
 {
-    this->octree = octree;
+    this->allColliders = allColliders;
     _pCommandQueue = _pDevice->newCommandQueue();
 
     Snow_ForwardState state1 = buildShaders("vertexMain", "fragmentPhong");
@@ -348,10 +348,10 @@ void Renderer::draw( CA::MetalDrawable* drawable, Node* sceneTree ) {
     stackPtr++;
     
     while (stackPtr > 0) {
-        if (nodeStack[stackPtr - 1]->isCollider) {
-            Collider* col = dynamic_cast<Collider*>(nodeStack[stackPtr-1]);
-            col->previousPosition = col->position;
-        }
+//        if (nodeStack[stackPtr - 1]->isCollider) {
+//            Collider* col = dynamic_cast<Collider*>(nodeStack[stackPtr-1]);
+//            col->previousPosition = col->position;
+//        }
         nodeStack[stackPtr - 1]->Update();
         if (nodeStack[stackPtr - 1]->isPrimitive) {
             pEnc->setRenderPipelineState(_pPSO3);
@@ -379,46 +379,7 @@ void Renderer::draw( CA::MetalDrawable* drawable, Node* sceneTree ) {
         }
     }
     
-//    drawOctree(drawable, phongUniforms);
-//    octree->updateOctree();
-    
     delete phongUniforms;
-}
-
-void Renderer::drawOctree( CA::MetalDrawable* drawable, Snow_PhongUniforms* pu ) {
-    OcNode* ocstack[256], *currentoc;
-    int sp = 0;
-    
-    pEnc->setRenderPipelineState(_pPSO3);
-    pEnc->setCullMode(MTL::CullModeBack);
-    pEnc->setFrontFacingWinding(MTL::WindingCounterClockwise);
-    pEnc->setDepthStencilState(_pDSS3);
-    
-    ocstack[sp] = octree;
-    
-    do {
-        currentoc = ocstack[sp];
-        
-        currentoc->myCube->scale = simd_make_float3(currentoc->size, currentoc->size, currentoc->size);
-        currentoc->myCube->position = currentoc->center;
-        
-        currentoc->myCube->Draw(pEnc, uniforms, pu);
-        
-        sp--;
-        
-        if (!currentoc->isDivided && currentoc->myColliders.size() == 0)
-            continue;
-        
-        if (currentoc->isDivided) {
-            for (int i = 0; i < 8; i++) {
-                if (currentoc->subOcs[i] == nullptr)
-                    continue;
-                sp++;
-                ocstack[sp] = currentoc->subOcs[i];
-            }
-        }
-        
-    } while (sp >= 0);
 }
 
 void Renderer::endDraw(CA::MetalDrawable* drawable) {

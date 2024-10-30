@@ -82,6 +82,27 @@ simd_float4x4 Transform::TransformMatrix(){
     return transformMatrix;
 }
 
+Quaternion Transform::quaternion() {
+    double newx = (rotation.x * SNOWSOUP_PI_F) / 180;
+    double newy = (rotation.y * SNOWSOUP_PI_F) / 180;
+    double newz = (rotation.z * SNOWSOUP_PI_F) / 180;
+    
+    double cr = cos(newx * 0.5);
+    double sr = sin(newx * 0.5);
+    double cp = cos(newy * 0.5);
+    double sp = sin(newy * 0.5);
+    double cy = cos(newz * 0.5);
+    double sy = sin(newz * 0.5);
+
+    Quaternion q;
+    q.w = cr * cp * cy + sr * sp * sy;
+    q.x = sr * cp * cy - cr * sp * sy;
+    q.y = cr * sp * cy + sr * cp * sy;
+    q.z = cr * cp * sy - sr * sp * cy;
+
+    return q;
+}
+
 vector_float3 Transform::Forward(){
     simd::float4 forward = vector4(0.f, 0.f, 1.f, 0.f);
     

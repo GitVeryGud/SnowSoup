@@ -22,17 +22,17 @@
 #include "OrthographicCamera.hpp"
 #include "DirectionalLight.hpp"
 
-#include "Core/Colliders/Octree.hpp"
+#include "Core/Colliders/Collider.hpp"
 
 class Renderer
 {
 public:
-    Renderer( MTL::Device* pDevice, OcNode* octree );
+    Renderer( MTL::Device* pDevice, std::vector<Collider*>* allColliders );
     ~Renderer();
     void            drawSetup( CA::MetalDrawable* drawable);
     void            initDraw( CA::MetalDrawable* drawable );
     void            draw( CA::MetalDrawable* drawable, Node* sceneTree );
-    void            drawOctree( CA::MetalDrawable* drawable, Snow_PhongUniforms* pu );
+//    void            drawOctree( CA::MetalDrawable* drawable, Snow_PhongUniforms* pu );
     void            endDraw( CA::MetalDrawable* drawable );
     
     Snow_ForwardState       buildShaders(std::string vertex, std::string fragment);
@@ -42,7 +42,7 @@ public:
     
     void                    createDepthAndTargetTextures(int width, int height);
     
-    void            setCameraAspect(float aspect);
+    void                    setCameraAspect(float aspect);
     
     MTL::RenderCommandEncoder*      pEnc;
     Snow_Uniforms                   *uniforms   = new Snow_Uniforms;
@@ -86,7 +86,7 @@ private:
     Snow_SkyboxUniforms             *skyUniforms = new Snow_SkyboxUniforms;
     Transform                       *boneco = new Transform;
     
-    OcNode                          *octree = nullptr;
+    std::vector<Collider*>*          allColliders;
 };
 
 #endif /* Renderer_hpp */

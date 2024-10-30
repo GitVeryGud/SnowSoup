@@ -14,6 +14,7 @@
 #include <thread>
 
 #include <QuartzCore/CAMetalDrawable.hpp>
+//#include <ccd/ccd.h>
 
 #include "WindowDelegate.hpp"
 #include "MetalView.hpp"
@@ -22,7 +23,7 @@
 #include "Renderer.hpp"
 #include "Core/Players/ModelTest.hpp"
 #include "Core/Colliders/Collider.hpp"
-#include "Core/Colliders/Octree.hpp"
+#include "Core/Colliders/CollisionManager.hpp"
 
 class SnowSoup{
 public:
@@ -52,7 +53,7 @@ private:
     
     std::vector<Collider*>* allColliders = nullptr;
     
-    OcNode* baseOcNode = nullptr;
+//    OcNode* baseOcNode = nullptr;
     float deltaTime;
 };
 

@@ -5,7 +5,7 @@
 
 #include <stdlib.h>
 
-#define COLLIDER_AMOUNT 50
+#define COLLIDER_AMOUNT 5
 
 int main(int argc, const char * argv[]) {
     SnowSoup engine;
@@ -13,7 +13,8 @@ int main(int argc, const char * argv[]) {
 //    Model* m;
     Cube* cube;
     
-    MovingCollider *c[COLLIDER_AMOUNT];
+    MovingCollider *mc;
+    Collider* c;
     
     srand(0);
     
@@ -21,6 +22,15 @@ int main(int argc, const char * argv[]) {
     cube = new Cube(engine.device);
     cube->setColor(1.f, 0.f, 0.f);
     cube->buildBuffers();
+    
+    mc = new MovingCollider(cube, engine.input);
+    c = new Collider(cube);
+    
+    mc->position.x = 5.f;
+    c->position.x = -2.f;
+    
+    engine.addNode(mc);
+    engine.addNode(c);
     
 //    c0 = new Collider(cube);
 //    c1 = new Collider(cube);
@@ -32,14 +42,14 @@ int main(int argc, const char * argv[]) {
 //    c2->position = simd_make_float3(-0.6f, 3.f, -0.3f);
 //    c3->position = simd_make_float3(0.2f, 2.f, 0.2f);
     
-    for (int i = 0; i < COLLIDER_AMOUNT; i++) {
-        c[i] = new MovingCollider(cube);
-        c[i]->position =
-        simd_make_float3((rand() % 1000) / 50 - 4.5f, (rand() % 1000) / 50 - 4.5f, (rand() % 1000) / 50 - 4.5f);
-        c[i]->scale = simd_make_float3(rand() % 2 + 0.5f, rand() % 2 + 0.5f, rand() % 2 + 0.5f);
-//        simd_make_float3(-2.f,-2.f,2.f);
-        engine.addNode(c[i]);
-    }
+//    for (int i = 0; i < COLLIDER_AMOUNT; i++) {
+//        c[i] = new MovingCollider(cube, engine.input);
+//        c[i]->position =
+//        simd_make_float3((rand() % 1000) / 50 - 4.5f, (rand() % 1000) / 50 - 4.5f, (rand() % 1000) / 50 - 4.5f);
+//        c[i]->scale = simd_make_float3(rand() % 2 + 2.f, rand() % 2 + 2.f, rand() % 2 + 2.f);
+////        simd_make_float3(-2.f,-2.f,2.f);
+//        engine.addNode(c[i]);
+//    }
 //    t = new ModelTest(engine.device);
 //    m = new Model(engine.device);
 //    t->input = engine.input;

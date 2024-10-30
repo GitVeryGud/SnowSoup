@@ -8,6 +8,8 @@
 #include "SnowSoup.hpp"
 
 void SnowSoup::init() {
+    CollisionManager* initCM = CollisionManager::getInstance();
+    
     input = new Input;
     sceneTree = new Node;
     
@@ -18,9 +20,8 @@ void SnowSoup::init() {
     cube->setColor(0.f, 1.f, 0.f);
     cube->buildBuffers();
     
-//    baseOcNode = new OcNode(0, simd_make_float3(0), 20, cube);
-    renderer = new Renderer(device, baseOcNode);
     allColliders = new std::vector<Collider*>();
+    renderer = new Renderer(device, allColliders);
     
     initWindow();
 }
@@ -146,6 +147,8 @@ void SnowSoup::run() {
             vector_float3 off_r = renderer->camera->Right();
             vector_float3 off_f = renderer->camera->Forward();
             
+            deltaTime = 1.f;
+            
             if(input->isKeyPressed(KEY_W)) {
                 renderer->camera->position.z += 1 * off_f.z * deltaTime;
                 renderer->camera->position.x += 1 * off_f.x * deltaTime;
@@ -168,6 +171,7 @@ void SnowSoup::run() {
             
             CA::MetalDrawable* metalDrawable = (__bridge CA::MetalDrawable*)[metalLayer nextDrawable];
             
+            CollisionManager::getInstance()->collideAllBoxes(allColliders);
             renderer->drawSetup(metalDrawable);
             renderer->draw(metalDrawable, sceneTree);
             renderer->endDraw(metalDrawable);

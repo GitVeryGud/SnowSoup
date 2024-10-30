@@ -44,4 +44,9 @@ typedef struct {
     MTL::DepthStencilState* depthState;
 } Snow_ForwardState;
 
+typedef struct
+{
+    double w, x, y, z;
+} Quaternion;
+
 #endif /* SnowStructs_h */
